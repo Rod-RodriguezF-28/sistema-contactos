@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title
+	th:text="'Spring Boot: MVC + Thymeleaf + Data JPA - ' + ${titulo}"></title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+<body>
+
+	<div th:fragment="titulo">
+
+		<div class="text-center card-header">
+			<h3 th:text="${titulo}"
+				class="mt-4 text-primary border-success border-bottom border-2"></h3>
+
+		</div>
+	</div>
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark"
+			data-bs-theme="dark">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="nav">
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" th:href="@{/listar}"><i
+								class="bi bi-telephone"></i> Agenda</a></li>
+						<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Contactos</a></li>
+						<li class="nav-item"><a class="nav-link" th:href="@{/form}">Agregar
+								conctacto</a></li>
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+		<div class="alert alert-success" th:if="${success != null}"
+			th:text="${success}"></div>
+		<div class="alert alert-danger" th:if="${error != null}"
+			th:text="${error}"></div>
+		<div class="alert alert-warning" th:if="${warning}"
+			th:text="${warning}"></div>
+		<div class="alert alert-info" th:if="${info}" th:text="${info}"></div>
+
+	</header>
+
+	<footer th:fragment="footer" class="bg-dark py-5 mt-5">
+		<div class="container text-light text-center">
+			<p class="display-5 mb-3">Rodrigo Rodriguez</p>
+			<small class="text-white-50">&copy; Copyright by Rodrigo
+				Rodriguez. Todos los derechos reservados</small>
+		</div>
+	</footer>
+	<div th:fragment="script">
+
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+			crossorigin="anonymous"></script>
+	</div>
+
+
+</body>
+</html>

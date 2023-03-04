@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout :: head}"></head>
+<body>
+
+	<header th:replace="~{layout/layout :: header}"></header>
+
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:replace="~{layout/layout :: titulo}"></div>
+			<div class="card-body">
+				<form th:action="@{/form}" th:object="${contacto}" method="post"
+					enctype="multipart/form-data">
+					<div class="mb-3">
+						<label for="exampleInputText" class="form-label">Nombre: </label>
+						<input type="text" class="form-control" id="exampleInputText"
+							aria-describedby="textHelp" th:field="*{nombre}"
+							th:errorclass="'form-control alert alert-danger'" /> <small
+							th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+							class="form-text text-danger"></small>
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputText" class="form-label">Apellido:
+						</label> <input type="text" class="form-control" id="exampleInputText"
+							aria-describedby="textHelp" th:field="*{apellido}"
+							th:errorclass="'form-control alert alert-danger'" /> <small
+							th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"
+							class="form-text text-danger"></small>
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputText" class="form-label">Numero: </label>
+						<input type="text" class="form-control" id="exampleInputText"
+							aria-describedby="textHelp" th:field="*{celular}"
+							th:errorclass="'form-control alert alert-danger'" /> <small
+							th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}"
+							class="form-text text-danger"></small>
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputEmail1" class="form-label">Email:
+						</label> <input type="email" class="form-control" id="exampleInputEmail1"
+							aria-describedby="emailHelp" th:field="*{email}"
+							th:errorclass="'form-control alert alert-danger'" /> <small
+							th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+							class="form-text text-danger"></small>
+					</div>
+					<div class="mb-3">
+						<label for="formFile" class="form-label">Foto</label> <input
+							class="form-control" type="file" name="file" id="formFile">
+					</div>
+
+					<button type="submit" class="btn btn-primary">Crear
+						contacto</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+	<div th:replace="~{layout/layout :: script}"></div>
+</body>
+</html>

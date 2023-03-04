@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout :: head}"></head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/base.css}" />
+<body class="min-vh-100">
+	<header th:replace="~{layout/layout :: header}"></header>
+
+
+	<div class="container py-4 contenido">
+		<div class="card bg-light mb-7">
+			<div class="card-header" th:text="${titulo}"></div>
+
+			<div class="card-body d-flex flex-wrap">
+				<img th:if="${contacto.foto != null and #strings.length(contacto.foto) > 0}"
+
+					class="img-thumbnail rounded float-left mr-4"
+					style="max-width: 150px;" th:alt="${contacto.foto}"
+					th:src="@{'/uploads/' + ${contacto.foto}}">
+				<ul class="list-group flex-fill p-4">
+					<li class="list-group-item" th:text="${contacto.nombre}"></li>
+					<li class="list-group-item" th:text="${contacto.apellido}"></li>
+					<li class="list-group-item" th:text="${contacto.celular}"></li>
+					<li class="list-group-item" th:text="${contacto.email}"></li>
+					<li class="list-group-item" th:text="${contacto.createAt}"></li>
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+
+
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+	<script th:replace="~{layout/layout :: script}"></script>
+</body>
+</html>
